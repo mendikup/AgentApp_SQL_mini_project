@@ -1,0 +1,111 @@
+using DataBase;
+using SqlAgent.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using System.Data.Common;
+using System.Security.Cryptography.X509Certificates;
+using System.Data;
+
+
+namespace SqlAgent.Services
+{
+    public class AgentService
+    {
+        private DbConnectionFactory Connection;
+
+        public AgentService(DbConnectionFactory connection)
+        {
+            Connection = connection;
+        }
+
+
+        public void AddAgent()
+        {
+
+        }
+
+        public void UppdateAgentLocation()
+        {
+
+        }
+
+        public void DleteAgemt()
+        {
+
+        }
+
+
+        public Agent GetAgentByID(int agentid)
+        {
+
+            Agent agent = null;
+            using (var conn = Connection.GetOpenConnection())
+            using (var command = new MySqlCommand($"SELECT * FROM agents WHERE agents.id ={agentid}", conn))
+            using (var reader = command.ExecuteReader())
+
+                while (reader.Read())
+                {
+                   
+                        int id = reader.GetInt32("id");
+                        string codeName = reader.GetString("codeName");
+                        string realName = reader.GetString("realName");
+                        string locatin = reader.GetString("location");
+                        string status=  reader.GetString("st");
+                        int missionsCompleted = reader.GetInt32("missionCompleted");
+
+
+                        agent = new Agent(id, codeName,realName,locatin,status,missionsCompleted);
+                        return agent;
+
+                    
+
+
+                }
+            return agent;
+
+        }
+
+
+
+
+
+        public List<Agent> GetAllAgents()
+        {
+            var agents = new List<Agent>();
+
+            try
+            {
+                using (var conn = Connection.GetOpenConnection())
+                using (var command = new MySqlCommand("SELECT * FROM agents", conn))
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int id = reader.GetInt32("id");
+                        string codeName = reader.GetString("codeName");
+                        string realName = reader.GetString("realName");
+                        string locatin = reader.GetString("location");
+                        string status=  reader.GetString("st");
+                        int missionsCompleted = reader.GetInt32("missionCompleted");
+
+
+                        var agent = new Agent(id, codeName,realName,locatin,status,missionsCompleted);
+                        agents.Add(agent);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error while uploading data from-DB:");
+                Console.WriteLine(ex.Message);
+
+            }
+
+            return agents;
+        }
+    }
+}
