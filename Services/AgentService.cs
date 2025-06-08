@@ -34,25 +34,37 @@ namespace SqlAgent.Services
                 command.Parameters.AddWithValue("@st", agent.Status);
                 command.Parameters.AddWithValue("@missionCompleted", agent.MissionsCompleted);
 
-                   command.ExecuteNonQuery();// ← נכון!
+                command.ExecuteNonQuery();
             }
 
-         
 
 
 
-        }
-
-        
-
-        public void UppdateAgentLocation()
-        {
 
         }
 
-        public void DleteAgemt()
-        {
 
+
+        public void UppdateAgentLocation(int agentId, string location)
+        {
+            using (var conn = Connection.GetOpenConnection())
+            using (var command = new MySqlCommand("UPDATE agents SET location = @location WHERE id = @id", conn))
+            {
+                command.Parameters.AddWithValue("@location", location);
+                command.Parameters.AddWithValue("@id", agentId);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DleteAgemt(int agentId)
+        {
+            using (var conn = Connection.GetOpenConnection())
+            using (var command = new MySqlCommand("DELETE FROM agents WHERE id = @id", conn))
+            {
+
+                command.Parameters.AddWithValue("@id", agentId);
+                command.ExecuteNonQuery();
+            }
         }
 
 

@@ -30,13 +30,18 @@ public class Program
             // }
 
 
-            Agent agent1 = agentservice.GetAgentByID(1);
+            // Agent agent1 = agentservice.GetAgentByID(1);
 
-            System.Console.WriteLine(agent1.ToString());
+            // System.Console.WriteLine(agent1.ToString());
 
-            Agent agent2 = new Agent(4, "Shadow", "Ethan Hunt", "London", "active", 17);
+            // Agent agent2 = new Agent(4, "Shadow", "Ethan Hunt", "London", "active", 17);
 
-            agentservice.AddAgent(agent2);
+
+
+            // agentservice.AddAgent(agent2);
+
+            agentservice.UppdateAgentLocation(1, "Tel Aviv");
+            agentservice.DleteAgemt(4);
 
 
 
