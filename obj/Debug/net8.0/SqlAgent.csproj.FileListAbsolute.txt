@@ -38,3 +38,4 @@ C:\Users\user\SqlAgent\obj\Debug\net8.0\refint\SqlAgent.dll
 C:\Users\user\SqlAgent\obj\Debug\net8.0\SqlAgent.pdb
 C:\Users\user\SqlAgent\obj\Debug\net8.0\SqlAgent.genruntimeconfig.cache
 C:\Users\user\SqlAgent\obj\Debug\net8.0\ref\SqlAgent.dll
+C:\Users\user\SqlAgent\obj\Debug\net8.0\SqlAgent.sourcelink.json

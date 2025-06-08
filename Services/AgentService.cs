@@ -23,10 +23,27 @@ namespace SqlAgent.Services
         }
 
 
-        public void AddAgent()
+        public void AddAgent(Agent agent)
         {
+            using (var conn = Connection.GetOpenConnection())
+            using (var command = new MySqlCommand("INSERT INTO agents(codeName, realName, location, st, missionCompleted) VALUES (@codeName, @realName, @location, @st, @missionCompleted)", conn))
+            {
+                command.Parameters.AddWithValue("@codeName", agent.CodeName);
+                command.Parameters.AddWithValue("@realName", agent.RealName);
+                command.Parameters.AddWithValue("@location", agent.Location);
+                command.Parameters.AddWithValue("@st", agent.Status);
+                command.Parameters.AddWithValue("@missionCompleted", agent.MissionsCompleted);
+
+                   command.ExecuteNonQuery();// ← נכון!
+            }
+
+         
+
+
 
         }
+
+        
 
         public void UppdateAgentLocation()
         {
@@ -49,19 +66,19 @@ namespace SqlAgent.Services
 
                 while (reader.Read())
                 {
-                   
-                        int id = reader.GetInt32("id");
-                        string codeName = reader.GetString("codeName");
-                        string realName = reader.GetString("realName");
-                        string locatin = reader.GetString("location");
-                        string status=  reader.GetString("st");
-                        int missionsCompleted = reader.GetInt32("missionCompleted");
+
+                    int id = reader.GetInt32("id");
+                    string codeName = reader.GetString("codeName");
+                    string realName = reader.GetString("realName");
+                    string locatin = reader.GetString("location");
+                    string status = reader.GetString("st");
+                    int missionsCompleted = reader.GetInt32("missionCompleted");
 
 
-                        agent = new Agent(id, codeName,realName,locatin,status,missionsCompleted);
-                        return agent;
+                    agent = new Agent(id, codeName, realName, locatin, status, missionsCompleted);
+                    return agent;
 
-                    
+
 
 
                 }
@@ -89,11 +106,11 @@ namespace SqlAgent.Services
                         string codeName = reader.GetString("codeName");
                         string realName = reader.GetString("realName");
                         string locatin = reader.GetString("location");
-                        string status=  reader.GetString("st");
+                        string status = reader.GetString("st");
                         int missionsCompleted = reader.GetInt32("missionCompleted");
 
 
-                        var agent = new Agent(id, codeName,realName,locatin,status,missionsCompleted);
+                        var agent = new Agent(id, codeName, realName, locatin, status, missionsCompleted);
                         agents.Add(agent);
                     }
                 }

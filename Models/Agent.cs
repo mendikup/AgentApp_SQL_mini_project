@@ -2,12 +2,12 @@ namespace SqlAgent.Models
 {
     public class Agent
     {
-        int Id { get; set; }
-        string CodeName { get; set; }
-        string RealName { get; set; }
-        string Location { get; set; }
-        string Status { get; set; }
-        int MissionsCompleted { get; set; }
+        public int Id { get; set; }
+        public string CodeName { get; set; }
+        public string RealName { get; set; }
+        public string Location { get; set; }
+        public string Status { get; set; }
+        public int MissionsCompleted { get; set; }
 
 
         public Agent(int id, string codeName, string realName, string locatin, string status, int missionsCompleted)

@@ -32,7 +32,11 @@ public class Program
 
             Agent agent1 = agentservice.GetAgentByID(1);
 
-           System.Console.WriteLine(agent1.ToString()); 
+            System.Console.WriteLine(agent1.ToString());
+
+            Agent agent2 = new Agent(4, "Shadow", "Ethan Hunt", "London", "active", 17);
+
+            agentservice.AddAgent(agent2);
 
 
 
