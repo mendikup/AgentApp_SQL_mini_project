@@ -82,12 +82,12 @@ namespace SqlAgent.Services
                     int id = reader.GetInt32("id");
                     string codeName = reader.GetString("codeName");
                     string realName = reader.GetString("realName");
-                    string locatin = reader.GetString("location");
+                    string location = reader.GetString("location");
                     string status = reader.GetString("st");
                     int missionsCompleted = reader.GetInt32("missionCompleted");
 
 
-                    agent = new Agent(id, codeName, realName, locatin, status, missionsCompleted);
+                    agent = new Agent(id, codeName, realName, location, status, missionsCompleted);
                     return agent;
 
 
@@ -117,12 +117,12 @@ namespace SqlAgent.Services
                         int id = reader.GetInt32("id");
                         string codeName = reader.GetString("codeName");
                         string realName = reader.GetString("realName");
-                        string locatin = reader.GetString("location");
+                        string location = reader.GetString("location");
                         string status = reader.GetString("st");
                         int missionsCompleted = reader.GetInt32("missionCompleted");
 
 
-                        var agent = new Agent(id, codeName, realName, locatin, status, missionsCompleted);
+                        var agent = new Agent(id, codeName, realName, location, status, missionsCompleted);
                         agents.Add(agent);
                     }
                 }

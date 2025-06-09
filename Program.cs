@@ -21,13 +21,13 @@ public class Program
             // Step 2: Create an instance of the service class that handles database operations 
             AgentService agentservice = new AgentService(Connection);
 
-            // // 
-            // List<Agent> agents = agentservice.GetAllAgents();
+            // 
+            List<Agent> agents = agentservice.GetAllAgents();
 
-            // foreach (Agent agent in agents)
-            // {
-            //     agent.ToString();
-            // }
+            foreach (Agent agent in agents)
+            {
+              System.Console.WriteLine( agent.ToString()); 
+            }
 
 
             // Agent agent1 = agentservice.GetAgentByID(1);
@@ -40,8 +40,8 @@ public class Program
 
             // agentservice.AddAgent(agent2);
 
-            agentservice.UppdateAgentLocation(1, "Tel Aviv");
-            agentservice.DleteAgemt(4);
+            // agentservice.UppdateAgentLocation(1, "Tel Aviv");
+            // agentservice.DleteAgemt(4);
 
 
 

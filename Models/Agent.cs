@@ -10,12 +10,12 @@ namespace SqlAgent.Models
         public int MissionsCompleted { get; set; }
 
 
-        public Agent(int id, string codeName, string realName, string locatin, string status, int missionsCompleted)
+        public Agent(int id, string codeName, string realName, string location, string status, int missionsCompleted)
         {
             Id = id;
             CodeName = codeName;
             RealName = realName;
-            Location = locatin;
+            Location = location;
             Status = status;
             MissionsCompleted = missionsCompleted;
 
